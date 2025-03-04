@@ -36,7 +36,38 @@ This project demonstrates an end-to-end MLOps architecture for predicting wildfi
 
 ## Repository Structure
 
-project-root/ ├── .github/ │ └── workflows/ │ └── ci-cd.yml # CI/CD workflow (pytest and data contract validation) ├── configs/ │ └── aws_config.json # (Optional) AWS configuration (region, etc.) ├── data_contract/ │ └── data_contract.yaml # Expected schema definition for the dataset ├── docker/ │ ├── Dockerfile # Dockerfile for the ingestion and/or backend service │ └── docker-compose.yml # (Optional) To run local services ├── notebooks/ │ └── exploration.ipynb # Notebooks for development and exploration ├── scripts/ │ ├── create_tables.py # Script to create DynamoDB tables │ ├── ingest_data.py # Script for ingesting data from S3 into DynamoDB │ └── synthetic_ingest.py # Script to simulate periodic ingestion of data ├── src/ │ ├── api/ │ │ └── main.py # FastAPI backend for predictions and MLOps functionalities │ ├── inference/ # Code for model inference on SageMaker (adapted) │ └── training/ # Scripts for model training and re-training ├── terraform/ │ └── main.tf # Terraform code for provisioning AWS resources ├── tests/ │ └── test_data_contract.py # Pytest tests to validate the data contract ├── requirements.txt # Project dependencies └── README.md # This file
+```graphql
+project-root/
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml                # Workflow de GitHub Actions para ejecutar tests, validaciones y despliegues
+├── configs/
+│   └── aws_config.json              # Configuración opcional para AWS (región, credenciales, etc.)
+├── data_contract/
+│   └── data_contract.yaml           # Definición del data contract (esquema esperado del dataset)
+├── docker/
+│   ├── Dockerfile                   # Dockerfile para empaquetar servicios (ingesta o backend)
+│   └── docker-compose.yml           # (Opcional) Para levantar servicios locales, por ejemplo, ingesta y Kafka
+├── notebooks/
+│   └── exploration.ipynb            # Notebooks para exploración y desarrollo inicial del modelo
+├── scripts/
+│   ├── create_tables.py             # Script para crear tablas en DynamoDB (FireDamageRecords y PredictionResults)
+│   ├── ingest_data.py               # Script para descargar el .geojson desde S3 y cargarlo en DynamoDB
+│   └── synthetic_ingest.py          # Script para simular la ingesta periódica de datos sintéticos o por particionado
+├── src/
+│   ├── api/
+│   │   └── main.py                  # Backend API con FastAPI para exponer predicciones y funcionalidades MLOps
+│   ├── inference/
+│   │   └── inference.py             # Código de inferencia adaptado para el endpoint de SageMaker
+│   └── training/
+│       └── train.py                 # Script para entrenamiento y reentrenamiento del modelo
+├── terraform/
+│   └── main.tf                      # Código Terraform para aprovisionar recursos en AWS (S3, DynamoDB, SageMaker, etc.)
+├── tests/
+│   └── test_data_contract.py        # Tests con pytest para validar el data contract (usando pandas y el dataset de ejemplo)
+├── requirements.txt                 # Lista de dependencias del proyecto (incluye boto3, fastapi, pytest, pandas, etc.)
+└── README.md                        # Documentación general del proyecto, componentes y guía de despliegue
+```
 
 ## Installation & Deployment
 
