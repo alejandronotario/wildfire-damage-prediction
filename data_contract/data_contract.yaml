@@ -1,0 +1,72 @@
+version: "1.0"
+contract:
+  columns:
+    - name: OBJECTID
+      type: number
+      required: true
+    - name: DAMAGE
+      type: string
+      required: true
+    - name: STREETNUMBER
+      type: string
+      required: true
+    - name: STREETNAME
+      type: string
+      required: true
+    - name: STREETTYPE
+      type: string
+      required: true
+    - name: STREETSUFFIX
+      type: string
+      required: false
+    - name: CITY
+      type: string
+      required: true
+    - name: STATE
+      type: string
+      required: true
+    - name: ZIPCODE
+      type: string
+      required: true
+    - name: CALFIREUNIT
+      type: string
+      required: true
+    - name: COUNTY
+      type: string
+      required: true
+    - name: COMMUNITY
+      type: string
+      required: true
+    - name: INCIDENTNAME
+      type: string
+      required: true
+    - name: APN
+      type: string
+      required: true
+    - name: ASSESSEDIMPROVEDVALUE
+      type: number
+      required: true
+    - name: YEARBUILT
+      type: number
+      required: true
+    - name: SITEADDRESS
+      type: string
+      required: true
+    - name: GLOBALID
+      type: string
+      required: true
+    - name: Latitude
+      type: number
+      required: true
+    - name: Longitude
+      type: number
+      required: true
+    - name: UTILITYMISCSTRUCTUREDISTANCE
+      type: number
+      required: false
+    - name: FIRENAME
+      type: string
+      required: false
+    - name: geometry
+      type: string
+      required: true

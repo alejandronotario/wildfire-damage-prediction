@@ -1,0 +1,32 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          #pip install pytest pandas
+          #pip install datacontract-cli
+
+      - name: Run Tests and Data Contract Validation
+        run: |
+          mkdir -p logs
+          pytest --junitxml=logs/results.xml 2>&1 | tee logs/test_output.log
+          # Valida el data contract (asumiendo que tienes un dataset de ejemplo en tests/sample_dataset.geojson)
+          #datacontract test -c data_contract/data_contract.yaml -d tests/POSTFIRE_MASTER_DATA_SHARE.geojson
